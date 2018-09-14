@@ -1,17 +1,16 @@
 package br.com.sensedia.aceleradores.models;
 
 import java.util.Date;
-import java.util.List;
 
-public class RatePayload {
+public class ConvertedCurrency {
   
   private Integer timestamp;
 
-  private String base;
+  private Float rate;
 
   private Date date;
 
-  private List<Rate> rates;
+  private Float result;
 
   public Integer getTimestamp() {
     return timestamp;
@@ -21,12 +20,12 @@ public class RatePayload {
     this.timestamp = timestamp;
   }
 
-  public String getBase() {
-    return base;
+  public Float getRate() {
+    return rate;
   }
 
-  public void setBase(String base) {
-    this.base = base;
+  public void setRate(Float rate) {
+    this.rate = rate;
   }
 
   public Date getDate() {
@@ -37,12 +36,12 @@ public class RatePayload {
     this.date = date;
   }
 
-  public List<Rate> getRates() {
-    return rates;
+  public Float getResult() {
+    return result;
   }
 
-  public void setRates(List<Rate> rates) {
-    this.rates = rates;
+  public void setResult(Float result) {
+    this.result = result;
   }
-  
+
 }

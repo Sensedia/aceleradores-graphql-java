@@ -1,16 +1,26 @@
 package br.com.sensedia.aceleradores.resolver;
 
-import br.com.sensedia.aceleradores.models.Country;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
+import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import br.com.sensedia.aceleradores.inputs.ConvertInput;
+import br.com.sensedia.aceleradores.inputs.CountryInput;
+import br.com.sensedia.aceleradores.inputs.WheaterInput;
+import br.com.sensedia.aceleradores.models.ConvertedCurrency;
+import br.com.sensedia.aceleradores.models.Country;
+import br.com.sensedia.aceleradores.models.Wheater;
 
 @Component
 public class QueryResolver implements GraphQLQueryResolver {
 
-    public List<Country> countries(){
-        return null;
-    }
+  public Wheater wheater(WheaterInput wheater) {
+    return null;
+  }
 
+  public Country country(CountryInput country) {
+    return null;
+  }
+
+  public ConvertedCurrency convertedCurrency(ConvertInput convert) {
+    return null;
+  }
 }

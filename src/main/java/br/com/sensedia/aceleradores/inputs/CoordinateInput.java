@@ -1,6 +1,6 @@
-package br.com.sensedia.aceleradores.models;
+package br.com.sensedia.aceleradores.inputs;
 
-public class Coordinate {
+public class CoordinateInput {
   
   private Integer lon;
 
@@ -21,4 +21,5 @@ public class Coordinate {
   public void setLat(Integer lat) {
     this.lat = lat;
   }
+
 }
