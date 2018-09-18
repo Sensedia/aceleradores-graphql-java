@@ -1,0 +1,265 @@
+# A date string, such as 2007-12-03
+scalar Date
+
+# A date-time string at UTC, such as 2007-12-03T10:15:30Z
+scalar DateTime
+
+# Global identificator
+interface Node {
+  id: ID!
+}
+
+# City
+type Country {
+  name: String
+
+  topLevelDomain: [String]
+
+  alpha2Code: String
+
+  alpha3Code: String
+
+  callingCodes: [String]
+
+  capital: String
+
+  altSpellings: [String]
+
+  region: String
+
+  subregion: String
+
+  population: Int
+
+  lat: Float
+
+  lng: Float
+
+  demonym: String
+
+  area: Float
+
+  gini: Float
+
+  timezones: [String]
+
+  borders: [String]
+
+  nativeName: String
+
+  numericCode: Int
+
+  cioc: String
+
+  flag: String
+
+  currencies: [Currency]
+
+  languages: [Language]
+
+  translations: [Translate]
+
+  weather: [Wheater]
+
+  rate: RatePayload
+}
+
+# Wheater payload
+type Wheater {
+  id: ID!
+
+  name: String
+
+  dt:Int
+
+  cod: Int
+
+  coord: Coordinate
+
+  sys: WheaterSys
+
+  weathers: [Wheaters]
+
+  main: WheaterMain
+
+  windGraphQLType: Wind
+
+  rain: Rain
+
+  clouds: Clouds
+
+  countryGraphQLType: Country
+
+  rate: RatePayload
+}
+
+# Wheater
+type Wheaters implements Node {
+  id: ID!
+
+  main: String
+
+  description: String
+
+  icon: String
+}
+
+# WheaterMain
+type WheaterMain {
+  temp: Float
+
+  humidity: Float
+
+  pressure: Float
+
+  temp_min: Float
+
+  temp_max: Float
+}
+
+# WheaterSys
+type WheaterSys {
+  countryGraphQLType: String
+
+  sunrise: Int
+
+  sunset: Int
+}
+
+# Coordinate
+type Coordinate {
+  lon: Int
+
+  lat: Int
+}
+
+# Wind
+type Wind {
+  speed: Float
+
+  deg: Float
+}
+
+# Rain
+type Rain {
+  threeH: Int
+}
+
+# Clouds
+type Clouds {
+  all: Int
+}
+
+# Currency
+type Currency
+{
+  code: String
+
+  name: String
+
+  symbol: String
+}
+
+# Language
+type Language {
+  model: String
+
+  value: String
+}
+
+# Translate
+type Translate {
+  alpha2Code: String
+
+  name: String
+}
+
+# RatePayload
+type RatePayload {
+  timestamp: Int
+
+  base: String
+
+  date: Date
+
+  rateGraphQLTypes: [Rate]
+}
+
+# Rate
+type Rate {
+  symbol: String
+
+  rate: Float
+}
+
+# ConvertedCurrency
+type ConvertedCurrency {
+  timestamp: Int!
+
+  rate: Float!
+
+  date: Date!
+
+  result: Float!
+}
+
+# CountryInput
+input CountryInput {
+  # Name
+  name: String
+
+  # Fullname
+  fullName: String
+
+  # Alpha code
+  alphaCode: Int
+}
+
+# CoordinateInput
+input CoordinateInput {
+  lon: Int
+
+  lat: Int
+}
+
+# WheaterInput
+input WheaterInput {
+  # City name
+  cityName: String
+
+  # City ID
+  cityId: Int
+
+  # Geographic Coordinates
+  coordinate: CoordinateInput
+
+  # ZipCode
+  zip: String
+}
+
+# ConvertInput
+input ConvertInput {
+  # Convert symbol from
+  from: String!
+
+  # Convert symbol to
+  to: String!
+
+  # Amount
+  amount: Float!
+}
+
+# Query
+type Query {
+  wheater(
+    input: WheaterInput!
+  ): Wheater!
+
+  countryGraphQLType(
+    input: CountryInput!
+  ): Country!
+
+  convertedCurrency(
+    input: ConvertInput!
+  ): ConvertedCurrency!
+}

@@ -1,12 +1,14 @@
 package br.com.sensedia.aceleradores.inputs;
 
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CountryInput {
   
   private String name;
-
   private String fullName;
-
-  private Integer alphaCode;
+  private String alphaCode;
 
   public String getName() {
     return name;
@@ -24,11 +26,11 @@ public class CountryInput {
     this.fullName = fullName;
   }
 
-  public Integer getAlphaCode() {
+  public String getAlphaCode() {
     return alphaCode;
   }
 
-  public void setAlphaCode(Integer alphaCode) {
+  public void setAlphaCode(String alphaCode) {
     this.alphaCode = alphaCode;
   }
 
