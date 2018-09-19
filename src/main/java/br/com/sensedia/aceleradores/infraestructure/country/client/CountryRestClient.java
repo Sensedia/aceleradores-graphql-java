@@ -1,20 +1,14 @@
 package br.com.sensedia.aceleradores.infraestructure.country.client;
 
-import br.com.sensedia.aceleradores.infraestructure.country.model.CountryResp;
 import br.com.sensedia.aceleradores.infraestructure.country.model.CountryRest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -34,18 +28,20 @@ public class CountryRestClient {
         StringBuilder url =  new StringBuilder().append(countryEndpoint).append(BASEPATH ).append("/{name}");
 
         try {
-            HttpEntity<CountryResp> entity = new HttpEntity<>(createHeaders());
-            ResponseEntity<?> response = restClient.exchange(url.toString(), HttpMethod.GET, entity, CountryRest[].class, name);
+            HttpEntity<?> entity = new HttpEntity<>(createHeaders());
+            ResponseEntity<List<CountryRest>> response = restClient.exchange(
+                    url.toString(),
+                    HttpMethod.GET,
+                    entity,
+                    new ParameterizedTypeReference<List<CountryRest>>(){},
+                    name);
+            List<CountryRest> list = response.getBody();
 
-            if (response == null || !response.getStatusCode().equals(HttpStatus.OK) || response.getBody() == null) {
+            if (list == null || list.isEmpty()) {
                 return null;
             }
 
-            Gson gson = new Gson();
-            Type collectionType = new TypeToken<ArrayList<CountryRest>>(){}.getType();
-            List<CountryRest> arrayList = gson.fromJson(response.getBody().toString(), collectionType);
-
-            result = arrayList.get(0);
+            result = list.get(0);
 
         } catch (HttpClientErrorException e) {
             throw e;
@@ -60,6 +56,5 @@ public class CountryRestClient {
 
         return headers;
     }
-
 
 }

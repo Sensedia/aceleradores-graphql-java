@@ -25,9 +25,9 @@ public class QueryResolver implements GraphQLQueryResolver {
 
   public Country country(CountryInput countryInput) {
     CountryFilter countryFilter = CountryConverter.toCountryFilter(countryInput);
-    Country ret = CountryConverter.toCountry(countryService.getCountry(countryFilter)) ;
+    Country country = CountryConverter.toCountry(countryService.getCountry(countryFilter)) ;
 
-    return null;
+    return country;
   }
 
 //  public ConvertedCurrency convertedCurrency(ConvertInput convert) {
