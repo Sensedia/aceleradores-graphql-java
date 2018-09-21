@@ -2,11 +2,90 @@
 input CountryInput {
   # Name
   name: String
+
+  # Fullname
+  fullName: String
+
+  # Alpha code
+  alphaCode: String
+}
+
+# Currency
+type Currency
+{
+  # Currency Code
+  code: String
+  # Currency Name
+  name: String
+  # Currency Symbol
+  symbol: String
+}
+
+# Language
+type Language {
+  # Language iso639_1
+  iso639_1: String
+  # Language iso639_2
+  iso639_2: String
+  # Language name
+  name: String
+  # Language Native Name
+  nativeName: String
 }
 
 # Country
 type Country {
   name: String
+
+  topLevelDomain: [String]
+
+  alpha2Code: String
+
+  alpha3Code: String
+
+  callingCodes: [String]
+
+  capital: String
+
+  altSpellings: [String]
+
+  region: String
+
+  subregion: String
+
+  population: Int
+
+  lat: Float
+
+  lng: Float
+
+  demonym: String
+
+  area: Float
+
+  gini: Float
+
+  timezones: [String]
+
+  borders: [String]
+
+  nativeName: String
+
+  numericCode: Int
+
+  cioc: String
+
+  flag: String
+
+  currencies: [Currency]
+
+  languages: [Language]
+
+  #translations: [Translate]
+
+  #weather: [Wheater]
+
+  #rate: RatePayload
 }
 
 # Query

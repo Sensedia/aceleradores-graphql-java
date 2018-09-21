@@ -28,8 +28,8 @@ public class CountryRest {
     private Integer numericCode;
     private String cioc;
     private String flag;
-//    private List<Currency> currencies;
-//    private List<Language> languages;
+    private List<CurrencyRest> currencies;
+    private List<LanguageRest> languages;
 //    private List<Translate> translations;
 //    private List<Wheater> weather;
 //    private RatePayload rate;
@@ -202,4 +202,19 @@ public class CountryRest {
         this.flag = flag;
     }
 
+    public List<CurrencyRest> getCurrencies() {
+        return currencies;
+    }
+
+    public void setCurrencies(List<CurrencyRest> currencies) {
+        this.currencies = currencies;
+    }
+
+    public List<LanguageRest> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<LanguageRest> languages) {
+        this.languages = languages;
+    }
 }

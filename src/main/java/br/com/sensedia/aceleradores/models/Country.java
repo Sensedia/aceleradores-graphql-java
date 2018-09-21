@@ -20,13 +20,13 @@ public class Country {
     private Float area;
     private Float gini;
     private List<String> timezones;
-    private String borders;
+    private List<String> borders;
     private String nativeName;
     private Integer numericCode;
     private String cioc;
     private String flag;
-//    private List<Currency> currencies;
-//    private List<Language> languages;
+    private List<Currency> currencies;
+    private List<Language> languages;
 //    private List<Translate> translations;
 //    private List<Wheater> weather;
 //    private RatePayload rate;
@@ -159,11 +159,11 @@ public class Country {
         this.timezones = timezones;
     }
 
-    public String getBorders() {
+    public List<String> getBorders() {
         return borders;
     }
 
-    public void setBorders(String borders) {
+    public void setBorders(List<String> borders) {
         this.borders = borders;
     }
 
@@ -197,5 +197,21 @@ public class Country {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public List<Currency> getCurrencies() {
+        return currencies;
+    }
+
+    public void setCurrencies(List<Currency> currencies) {
+        this.currencies = currencies;
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
     }
 }

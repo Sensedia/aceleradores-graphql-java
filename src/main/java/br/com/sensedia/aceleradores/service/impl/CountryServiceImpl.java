@@ -15,6 +15,12 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public CountryRest getCountry(CountryFilter countryFilter) {
+
         return countryRepository.findCountryByName(countryFilter.getCountryName());
+
+        //countryFilter.getCountryFullName();
+
+        //countryFilter.getCountryAlphaCode();
+
     }
 }
