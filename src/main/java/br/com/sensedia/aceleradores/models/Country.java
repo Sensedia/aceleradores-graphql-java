@@ -27,8 +27,8 @@ public class Country {
     private String flag;
     private List<Currency> currencies;
     private List<Language> languages;
+    private Wheater weather;
 //    private List<Translate> translations;
-//    private List<Wheater> weather;
 //    private RatePayload rate;
 
     public String getName() {
@@ -213,5 +213,13 @@ public class Country {
 
     public void setLanguages(List<Language> languages) {
         this.languages = languages;
+    }
+
+    public Wheater getWeather() {
+        return weather;
+    }
+
+    public void setWeather(Wheater weather) {
+        this.weather = weather;
     }
 }

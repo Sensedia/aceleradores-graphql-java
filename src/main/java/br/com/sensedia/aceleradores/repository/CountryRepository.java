@@ -16,7 +16,14 @@ public class CountryRepository {
         return countryRest;
     }
 
+    public CountryRest findCountryByFullName(String fullName) {
+        CountryRest countryRest = countryRestClient.getCountryByFullName(fullName);
+        return countryRest;
+    }
 
-
+    public CountryRest findCountryByAlphaCode(String alphaCode) {
+        CountryRest countryRest = countryRestClient.getCountryByAlphaCode(alphaCode);
+        return countryRest;
+    }
 
 }

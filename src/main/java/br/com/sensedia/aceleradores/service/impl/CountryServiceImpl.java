@@ -6,6 +6,7 @@ import br.com.sensedia.aceleradores.service.CountryService;
 import br.com.sensedia.aceleradores.specification.filter.CountryFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class CountryServiceImpl implements CountryService {
@@ -14,13 +15,17 @@ public class CountryServiceImpl implements CountryService {
     CountryRepository countryRepository;
 
     @Override
-    public CountryRest getCountry(CountryFilter countryFilter) {
+    public CountryRest findByFilter(CountryFilter countryFilter) {
+        CountryRest countryRest = new CountryRest();
 
-        return countryRepository.findCountryByName(countryFilter.getCountryName());
+        if (countryFilter.getCountryName() != null && !countryFilter.getCountryName().equals("")) {
+            countryRest = countryRepository.findCountryByName(countryFilter.getCountryName());
+        } else if (countryFilter.getCountryFullName() !=  null && !countryFilter.getCountryFullName().equals("")) {
+            countryRest = countryRepository.findCountryByFullName(countryFilter.getCountryFullName());
+        } else if (countryFilter.getCountryAlphaCode() != null && !countryFilter.getCountryAlphaCode().equals("")) {
+            countryRest = countryRepository.findCountryByAlphaCode(countryFilter.getCountryAlphaCode());
+        }
 
-        //countryFilter.getCountryFullName();
-
-        //countryFilter.getCountryAlphaCode();
-
+        return countryRest;
     }
 }

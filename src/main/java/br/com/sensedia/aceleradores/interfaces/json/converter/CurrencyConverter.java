@@ -12,14 +12,16 @@ public class CurrencyConverter {
 
         List<Currency> list = new ArrayList<Currency>();
 
-        for (CurrencyRest currencyRestItem : currencyRest){
+        if (currencyRest != null) {
+            for (CurrencyRest currencyRestItem : currencyRest){
 
-            Currency currency = new Currency();
-            currency.setCode(currencyRestItem.getCode());
-            currency.setName(currencyRestItem.getName());
-            currency.setSymbol(currencyRestItem.getSymbol());
+                Currency currency = new Currency();
+                currency.setCode(currencyRestItem.getCode());
+                currency.setName(currencyRestItem.getName());
+                currency.setSymbol(currencyRestItem.getSymbol());
 
-            list.add(currency);
+                list.add(currency);
+            }
         }
 
         return list;

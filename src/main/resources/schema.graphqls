@@ -2,10 +2,8 @@
 input CountryInput {
   # Name
   name: String
-
   # Fullname
   fullName: String
-
   # Alpha code
   alphaCode: String
 }
@@ -31,6 +29,22 @@ type Language {
   name: String
   # Language Native Name
   nativeName: String
+}
+
+# WheaterInput
+input WheaterInput {
+    # WheaterInput City Name
+    cityName:String
+}
+
+#Wheater
+type Wheater {
+  # Wheater Id
+  id: Int
+  # Wheater Name
+  name: String
+  # Wheater Cod
+  cod: Int
 }
 
 # Country
@@ -84,7 +98,7 @@ type Country {
   # Country Translations
   #translations: [Translate]
   # Country Weather
-  #weather: [Wheater]
+  weather: Wheater
   # Country Exchange Rate
   #rate: RatePayload
 }

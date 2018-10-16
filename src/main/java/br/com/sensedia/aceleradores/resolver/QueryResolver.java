@@ -7,11 +7,7 @@ import br.com.sensedia.aceleradores.specification.filter.CountryFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import br.com.sensedia.aceleradores.inputs.ConvertInput;
 import br.com.sensedia.aceleradores.inputs.CountryInput;
-import br.com.sensedia.aceleradores.inputs.WheaterInput;
-
-import java.util.List;
 
 @Component
 public class QueryResolver implements GraphQLQueryResolver {
@@ -25,7 +21,7 @@ public class QueryResolver implements GraphQLQueryResolver {
 
   public Country country(CountryInput countryInput) {
     CountryFilter countryFilter = CountryConverter.toCountryFilter(countryInput);
-    Country country = CountryConverter.toCountry(countryService.getCountry(countryFilter)) ;
+    Country country = CountryConverter.toCountry(countryService.findByFilter(countryFilter)) ;
 
     return country;
   }

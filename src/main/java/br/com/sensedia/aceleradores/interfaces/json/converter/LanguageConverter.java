@@ -12,15 +12,17 @@ public class LanguageConverter {
 
         List<Language> list = new ArrayList<Language>();
 
-        for (LanguageRest languageRestItem : languageRest){
+        if (languageRest != null) {
+            for (LanguageRest languageRestItem : languageRest){
 
-            Language language = new Language();
-            language.setIso639_1(languageRestItem.getIso639_1());
-            language.setIso639_2(languageRestItem.getIso639_2());
-            language.setName(languageRestItem.getName());
-            language.setNativeName(languageRestItem.getNativeName());
+                Language language = new Language();
+                language.setIso639_1(languageRestItem.getIso639_1());
+                language.setIso639_2(languageRestItem.getIso639_2());
+                language.setName(languageRestItem.getName());
+                language.setNativeName(languageRestItem.getNativeName());
 
-            list.add(language);
+                list.add(language);
+            }
         }
 
         return list;
