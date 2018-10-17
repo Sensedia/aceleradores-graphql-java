@@ -1,6 +1,9 @@
-package br.com.sensedia.aceleradores.models;
+package br.com.sensedia.aceleradores.infraestructure.weather.model;
 
-public class Wheater {
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class WeatherRest {
 
     private Integer id;
     private String name;

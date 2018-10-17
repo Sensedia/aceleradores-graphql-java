@@ -6,4 +6,5 @@ import br.com.sensedia.aceleradores.specification.filter.CountryFilter;
 public interface CountryService {
 
     CountryRest findByFilter(CountryFilter countryFilter);
+
 }

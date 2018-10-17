@@ -31,7 +31,7 @@ public class CountryRest {
     private List<CurrencyRest> currencies;
     private List<LanguageRest> languages;
 //    private List<Translate> translations;
-//    private List<Wheater> weather;
+//    private List<Weather> weather;
 //    private RatePayload rate;
 
     public String getName() {

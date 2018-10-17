@@ -251,7 +251,7 @@ input ConvertInput {
 
 # Query
 type Query {
-  wheater(
+  weather(
     input: WheaterInput!
   ): Wheater!
 

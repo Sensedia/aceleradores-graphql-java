@@ -31,19 +31,19 @@ type Language {
   nativeName: String
 }
 
-# WheaterInput
-input WheaterInput {
-    # WheaterInput City Name
-    cityName:String
+# WeatherFilter
+input WeatherFilter {
+    # WeatherInput City Name
+    cityName: String
 }
 
-#Wheater
-type Wheater {
-  # Wheater Id
+#Weather
+type Weather {
+  # Weather Id
   id: Int
-  # Wheater Name
+  # Weather Name
   name: String
-  # Wheater Cod
+  # Weather Cod
   cod: Int
 }
 
@@ -95,18 +95,12 @@ type Country {
   currencies: [Currency]
   # Country Languages
   languages: [Language]
-  # Country Translations
-  #translations: [Translate]
   # Country Weather
-  weather: Wheater
-  # Country Exchange Rate
-  #rate: RatePayload
+  weather( filter: WeatherFilter ): Weather
 }
 
 # Query
 type Query {
   # Query Country
-  country(
-    input: CountryInput
-  ): Country
+  country( input: CountryInput ): Country
 }

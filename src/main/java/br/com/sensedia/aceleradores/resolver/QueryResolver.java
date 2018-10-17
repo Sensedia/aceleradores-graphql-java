@@ -15,10 +15,6 @@ public class QueryResolver implements GraphQLQueryResolver {
   @Autowired
   private CountryService countryService;
 
-//  public WheaterGraphQLType wheater(WheaterInput wheater) {
-//    return null;
-//  }
-
   public Country country(CountryInput countryInput) {
     CountryFilter countryFilter = CountryConverter.toCountryFilter(countryInput);
     Country country = CountryConverter.toCountry(countryService.findByFilter(countryFilter)) ;
@@ -26,7 +22,4 @@ public class QueryResolver implements GraphQLQueryResolver {
     return country;
   }
 
-//  public ConvertedCurrency convertedCurrency(ConvertInput convert) {
-//    return null;
-//  }
 }
