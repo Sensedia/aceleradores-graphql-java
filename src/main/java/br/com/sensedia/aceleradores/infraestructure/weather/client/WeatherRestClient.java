@@ -14,6 +14,9 @@ public class WeatherRestClient {
     @Value("${weather.api.endpoint}")
     private String weatherEndpoint;
 
+    @Value("${weather.api.appId}")
+    private String weatherAppId;
+
     @Autowired
     private RestTemplate restClient;
 
@@ -27,15 +30,15 @@ public class WeatherRestClient {
     }
 
 
-    public WeatherRest getWeatherByCityName(String cityName) {
+    public WeatherRest getWeatherByCityNameAndCountryAlphaCode(String cityName, String countryAlphaCode) {
 
-        WeatherRest result = null;
+        WeatherRest result = new WeatherRest();
         StringBuilder url =  new StringBuilder().
                 append(weatherEndpoint).append(BASEPATH ).
                 append("?q=").
                 append("{cityName}").
-                append(",br").
-                append("&APPID=d23286b45c3311c864c15141e1694d16");
+                append(",{countryAlphaCode}").
+                append("&APPID=").append(weatherAppId);
 
         try {
             HttpEntity<?> entity = new HttpEntity<>(createHeaders());
@@ -44,17 +47,17 @@ public class WeatherRestClient {
                     HttpMethod.GET,
                     entity,
                     WeatherRest.class,
-                    cityName);
+                    cityName, countryAlphaCode);
             WeatherRest weatherRest = response.getBody();
 
             if (weatherRest == null) {
-                return null;
+                return result;
             }
 
             result = weatherRest;
 
         } catch (HttpClientErrorException e) {
-            throw e;
+            return result;
         }
 
         return result;

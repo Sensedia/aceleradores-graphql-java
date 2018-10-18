@@ -27,6 +27,12 @@ public class CountryResolver implements GraphQLResolver<Country> {
             weatherFilter.setCityName(filter.getCityName());
         }
 
+        if (ObjectUtils.isEmpty(filter) || ObjectUtils.isEmpty(filter.getCountryAlphaCode())) {
+            weatherFilter.setCountryAlphaCode(country.getAlpha2Code());
+        } else {
+            weatherFilter.setCountryAlphaCode(filter.getCountryAlphaCode());
+        }
+
         Weather weather = WeatherConverter.toWheater(weatherService.findByFilter(weatherFilter));
 
         return weather;

@@ -6,6 +6,7 @@ import br.com.sensedia.aceleradores.service.WeatherService;
 import br.com.sensedia.aceleradores.specification.filter.WeatherFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 @Service
 public class WeatherServiceImpl implements WeatherService {
@@ -18,8 +19,8 @@ public class WeatherServiceImpl implements WeatherService {
 
         WeatherRest weatherRest = new WeatherRest();
 
-        if (filter.getCityName() != null && !filter.getCityName().equals("")) {
-            weatherRest = weatherRepository.findByCityName(filter.getCityName());
+        if (!ObjectUtils.isEmpty(filter)) {
+            weatherRest = weatherRepository.findByFilter(filter);
         }
 
         return weatherRest;
